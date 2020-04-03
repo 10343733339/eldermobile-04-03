@@ -1,0 +1,419 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<!-- 项目信息 -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.10.RELEASE</version>
+	</parent>
+
+	<groupId>www.dd.com</groupId>
+	<artifactId>eldermobile</artifactId> 
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<!-- 项目信息 -->
+
+
+	<dependencies>
+		<!-- springboot引入 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<!-- <artifactId>spring-boot-starter-thymeleaf</artifactId> -->
+		</dependency>
+
+		<!-- spring-boot使用自带tomcat容器配置begin -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- war包 -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-servlet-api</artifactId>
+			<version>7.0.42</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- 访问jsp -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<!-- 访问jsp -->
+
+		<!--二级缓存ehcache -->
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-core</artifactId> 
+			<version>5.0.12.Final</version> </dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>net.sf.ehcache</groupId>
+					<artifactId>ehcache-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>2.10.3</version>
+		</dependency>
+		<!--二级缓存ehcache -->
+
+
+
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-aop</artifactId> 
+			</dependency> -->
+		<!-- jpa -->
+
+		<!-- 工具包 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.7.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.8.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-hibernate4</artifactId>
+			<version>2.5.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-jaxb-annotations</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.9</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.collections/google-collections -->
+		<dependency>
+			<groupId>com.google.collections</groupId>
+			<artifactId>google-collections</artifactId>
+			<version>1.0-rc2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer</artifactId>
+			<version>5.4.0</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-io -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<!-- 工具包 -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+
+
+		<!-- 只需引入spring-boot-devtools 即可实现热部署 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional> <!-- 这个需要为 true 热部署才有效 -->
+		</dependency>
+
+		<!-- 监控数据库 druid 连接池 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.25</version>
+		</dependency>
+
+		<!-- 下面两个引入为了操作数据库 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<!-- net.json包 -->
+		<!-- https://mvnrepository.com/artifact/net.sf.json-lib/json-lib -->
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<classifier>jdk15</classifier>
+			<version>2.2.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.9</version>
+		</dependency>
+
+		<!-- 信鸽推送 -->
+		<!-- 需要本地install -->
+		<!-- <dependency> <groupId>com.tencent.xinge</groupId> <artifactId>xinge</artifactId> 
+			<version>1.0</version> </dependency> -->
+
+		<!-- gson 相关 -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.ikidou</groupId>
+			<artifactId>TypeBuilder</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- 需要本地install -->
+		 <dependency>  
+			<groupId>com.tencent.xinge</groupId> 
+			<artifactId>xinge</artifactId>  
+			<version>1.0</version> 
+		</dependency>  
+		<!-- JAX-RS请求框架 -->
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId> 
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.inject</groupId>
+			<artifactId>jersey-hk2</artifactId>
+			<version>2.26</version>
+		</dependency>
+		
+		<!-- webRtc视频 -->
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>bean-validator</artifactId>
+			<version>3.0-JBoss-4.0.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.enterprise.deploy</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.jms</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.management.j2ee</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>javax.persistence</artifactId>
+			<version>2.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.resource</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.security.auth.message</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.security.jacc</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.servlet</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.servlet.jsp</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.servlet.jsp.jstl</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api-osgi</artifactId>
+			<version>2.2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>jsr311-api</artifactId>
+			<version>1.1.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jstl-impl</artifactId>
+			<version>1.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.3</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- <dependency>
+			<groupId>javax.xml</groupId>
+			<artifactId>webservices-api-osgi</artifactId>
+			<version>2.0.1</version>
+			<scope>provided</scope>
+		</dependency> -->
+		<!-- <dependency>
+			<groupId>org.jboss.weld</groupId>
+			<artifactId>weld-osgi-bundle</artifactId>
+			<version>1.0.1-SP3</version>
+			<scope>provided</scope>
+		</dependency> -->
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>javax.servlet.jsp.jstl</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.corundumstudio.socketio</groupId>
+			<artifactId>netty-socketio</artifactId>
+			<version>1.7.12</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.socket</groupId>
+			<artifactId>socket.io-client</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		
+		<dependency>
+    <groupId>cn.jpush.api</groupId>
+    <artifactId>jpush-client</artifactId>
+    <version>3.3.9</version>
+</dependency>
+		<!-- webRtc视频 -->
+		<!-- 生成实体 -->
+		<!-- <dependency> <groupId>com.baomidou</groupId> <artifactId>mybatis-plus</artifactId> 
+			<version>2.0.5</version> </dependency> -->
+		<!-- 代码生成器模板 -->
+		<!-- <dependency> <groupId>org.apache.velocity</groupId> <artifactId>velocity</artifactId> 
+			<version>1.7</version> </dependency> -->
+		<!-- redis -->
+		<!-- <dependency> <groupId>redis.clients</groupId> <artifactId>jedis</artifactId> 
+			<version>2.7.3</version> </dependency> <dependency> <groupId>org.springframework.data</groupId> 
+			<artifactId>spring-data-redis</artifactId> <version>1.7.2.RELEASE</version> 
+			</dependency> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-redis</artifactId> 
+			<version>RELEASE</version> </dependency> -->
+		<!-- 文件上传 -->
+		<!-- <dependency> <groupId>commons-fileupload</groupId> <artifactId>commons-fileupload</artifactId> 
+			<version>1.3.3</version> </dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf-spring4 -->
+		<!-- <dependency> <groupId>org.thymeleaf</groupId> <artifactId>thymeleaf-spring4</artifactId> 
+			<version>3.0.9.RELEASE</version> </dependency> -->
+	</dependencies>
+
+
+
+	<!-- <build> <plugins> <plugin> <groupId>org.springframework.boot</groupId> 
+		<artifactId>spring-boot-maven-plugin </artifactId> 版本 <version>1.4.2.RELEASE</version> 
+		<executions> <execution> <goals> <goal>repackage</goal> </goals> </execution> 
+		</executions> <configuration> <mainClass>${start-class}</mainClass> <layout>JAR</layout> 
+		</configuration> </plugin> </plugins> <resources> 打包时将jsp文件拷贝到META-INF目录下 
+		<resource> 指定resources插件处理哪个目录下的资源文件 <directory>src/main/webapp</directory> 
+		注意此次必须要放在此目录下才能被访问到 <targetPath>META-INF/resources</targetPath> <includes> 
+		<include>**/**</include> </includes> </resource> <resource> <directory>src/main/resources</directory> 
+		<includes> <include>**/**</include> </includes> <filtering>false</filtering> 
+		</resource> <resource> <directory>src/main/java</directory> <excludes> <exclude>**/*.java</exclude> 
+		</excludes> </resource> </resources> </build> -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+
+</project>

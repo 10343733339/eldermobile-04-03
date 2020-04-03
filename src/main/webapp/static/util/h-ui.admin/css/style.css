@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* 你自己的样式 */
+
+.product-buyer-commodityname {
+
+max-width: 200px;
+
+overflow: hidden;
+
+text-overflow: ellipsis;
+
+white-space: nowrap;
+
+}
